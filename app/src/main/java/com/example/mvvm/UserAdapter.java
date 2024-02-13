@@ -1,7 +1,9 @@
 package com.example.mvvm;
 
 import android.annotation.SuppressLint;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,7 +21,6 @@ import java.util.List;
 import java.util.Map;
 
 public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
-
     private final List<Users> userList;
     private final Map<Integer, Boolean> expandMap;
 
@@ -52,8 +53,8 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
             super(itemView);
             avatarImageView = itemView.findViewById(R.id.avatarImageView2);
             nameTextView = itemView.findViewById(R.id.nameTextView2);
-            emailTextView = itemView.findViewById(R.id.tvEmail);
-            genderTextView = itemView.findViewById(R.id.tvGender);
+//            emailTextView = itemView.findViewById(R.id.tvEmail);
+//            genderTextView = itemView.findViewById(R.id.tvGender);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -97,18 +98,39 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
         String fullName = String.format("%s %s", user.getFirstName(), user.getLastName());
         holder.nameTextView.setText(fullName);
 
-        boolean expanded = Boolean.TRUE.equals(expandMap.get(position));
-        holder.emailTextView.setVisibility(expanded ? View.VISIBLE : View.GONE);
-        holder.genderTextView.setVisibility(expanded ? View.VISIBLE : View.GONE);
-
-        if (expanded) {
-            holder.emailTextView.setText("Email: " + user.getEmail());
-            holder.genderTextView.setText("Gender: " + user.getGender());
-        }
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showDialog(holder.itemView.getContext(), user);
+            }
+        });
     }
 
     @Override
     public int getItemCount() {
         return userList.size();
+    }
+
+    @SuppressLint("MissingInflatedId")
+    private void showDialog(Context c, Users u){
+        AlertDialog.Builder builder = new AlertDialog.Builder(c);
+        View dialogView = LayoutInflater.from(c).inflate(R.layout.user_details,null);
+
+        TextView tvEmail, tvGen;
+        tvEmail = dialogView.findViewById(R.id.tvEmail1);
+        tvGen = dialogView.findViewById(R.id.tvGender1);
+
+        tvEmail.setText("Email: " + u.getEmail());
+        tvGen.setText("Gender: " + u.getGender());
+
+        builder.setView(dialogView);
+        builder.setTitle("Users Details");
+        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+        builder.create().show();
     }
 }

@@ -36,7 +36,5 @@ public class MainActivity extends AppCompatActivity {
         userViewModel.fetchUsers();
     }
 
-    public void showDetails(View view) {
 
-    }
 }

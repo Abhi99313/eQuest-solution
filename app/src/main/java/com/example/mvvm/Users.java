@@ -6,15 +6,15 @@ public class Users {
     private String last_name;
     private String gender;
     private String email;
-    private String avatarUrl;
+    private String avatar;
 
-    public Users(int id, String first_name, String last_name,String gender, String email, String avatarUrl) {
+    public Users(int id, String first_name, String last_name,String gender, String email, String avatar) {
         this.id = id;
         this.first_name = first_name;
         this.last_name = last_name;
         this.gender = gender;
         this.email = email;
-        this.avatarUrl = avatarUrl;
+        this.avatar = avatar;
     }
 
 
@@ -50,11 +50,11 @@ public class Users {
     }
 
     public String getAvatarUrl() {
-        return avatarUrl;
+        return avatar;
     }
 
     public void setAvatarUrl(String avatarUrl) {
-        this.avatarUrl = avatarUrl;
+        this.avatar = avatarUrl;
     }
 
 }
