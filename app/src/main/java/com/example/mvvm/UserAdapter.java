@@ -116,7 +116,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
         AlertDialog.Builder builder = new AlertDialog.Builder(c);
         View dialogView = LayoutInflater.from(c).inflate(R.layout.user_details,null);
 
-        TextView tvEmail, tvGen,tvId;
+        TextView tvId, tvEmail, tvGen;
         tvEmail = dialogView.findViewById(R.id.tvEmail1);
         tvGen = dialogView.findViewById(R.id.tvGender1);
         tvId = dialogView.findViewById(R.id.tvId);
