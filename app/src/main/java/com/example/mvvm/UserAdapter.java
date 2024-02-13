@@ -48,7 +48,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
         TextView nameTextView;
         TextView emailTextView;
         TextView genderTextView;
-
+        TextView tvId;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             avatarImageView = itemView.findViewById(R.id.avatarImageView2);
@@ -116,12 +116,14 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
         AlertDialog.Builder builder = new AlertDialog.Builder(c);
         View dialogView = LayoutInflater.from(c).inflate(R.layout.user_details,null);
 
-        TextView tvEmail, tvGen;
+        TextView tvEmail, tvGen,tvId;
         tvEmail = dialogView.findViewById(R.id.tvEmail1);
         tvGen = dialogView.findViewById(R.id.tvGender1);
+        tvId = dialogView.findViewById(R.id.tvId);
 
         tvEmail.setText("Email: " + u.getEmail());
         tvGen.setText("Gender: " + u.getGender());
+        tvId.setText("ID: "+u.getId());
 
         builder.setView(dialogView);
         builder.setTitle("Users Details");
