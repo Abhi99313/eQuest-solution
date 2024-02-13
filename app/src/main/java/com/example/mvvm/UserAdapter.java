@@ -121,9 +121,9 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
         tvGen = dialogView.findViewById(R.id.tvGender1);
         tvId = dialogView.findViewById(R.id.tvId);
 
+        tvId.setText("ID: "+u.getId());
         tvEmail.setText("Email: " + u.getEmail());
         tvGen.setText("Gender: " + u.getGender());
-        tvId.setText("ID: "+u.getId());
 
         builder.setView(dialogView);
         builder.setTitle("Users Details");
