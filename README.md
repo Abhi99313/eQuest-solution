@@ -20,7 +20,7 @@ This Android application is a demonstration of MVVM architecture, API integratio
 - Utilize circle images to display user avatars.
 
 ## Instructions for Running the App
--Click here to download:[click here](https://github.com/Abhi99313/eQuest-solution/releases/download/Android/app-release.apk)
+-Click here to download:[click here](https://github.com/Abhi99313/eQuest-solution/releases/tag/eQuest)
 
 1. **Clone Repository:**
    ```bash
